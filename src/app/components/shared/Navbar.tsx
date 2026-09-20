@@ -42,10 +42,12 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <div className="flex gap-2 items-center">
-            <Image src={Logo} alt="Book Logo"></Image>
-            <h2 className="text-2xl font-bold">Book Vibe</h2>
-          </div>
+          <Link href="/">
+            <div className="flex gap-2 items-center">
+              <Image src={Logo} alt="Book Logo"></Image>
+              <h2 className="text-2xl font-bold">Book Vibe</h2>
+            </div>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

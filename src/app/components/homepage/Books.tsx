@@ -1,8 +1,9 @@
 import React from "react";
 import type { BookType } from "@/app/types/book-types";
-import BookCard from "../shared/BookCard";
+import BookCard from "@/app/components/shared/BookCard";
+import Link from "next/link";
 
-const getData = async () => {
+export const getData = async () => {
   const res = await fetch("http://localhost:3000/data/booksData.json");
   const data = await res.json();
   return data;
@@ -21,8 +22,13 @@ const Books = async () => {
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {books.map((book) => (
-          
-            <BookCard key={book.bookId} book={book}></BookCard>
+          <Link
+            key={book.bookId}
+            href={`/books/${book.bookId}`}
+            className="block h-full transition-transform duration-200 hover:-translate-y-1 focus:outline-none"
+          >
+            <BookCard book={book} />
+          </Link>
         ))}
       </div>
     </section>
