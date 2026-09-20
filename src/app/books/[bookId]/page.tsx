@@ -1,4 +1,5 @@
 import ReadButton from "@/app/components/bookDetails/ReadButton";
+import WishlistButton from "@/app/components/bookDetails/WishListButton";
 import { getData } from "@/app/components/homepage/Books";
 import { BookType } from "@/app/types/book-types";
 import Image from "next/image";
@@ -116,12 +117,7 @@ const BookDetailPage = async ({ params }: BookDetailProps) => {
           {/* Action Buttons */}
           <div className="flex items-center gap-4 pt-4">
             <ReadButton book={book}></ReadButton>
-            <button
-              type="button"
-              className="px-8 py-3 rounded-xl bg-[#4eb6cb] text-white font-semibold text-sm hover:bg-[#3ea0b4] transition-colors shadow-sm"
-            >
-              Wishlist
-            </button>
+            <WishlistButton book={book}></WishlistButton>
           </div>
         </div>
       </div>
