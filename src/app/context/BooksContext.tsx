@@ -9,9 +9,15 @@ interface BooksContextType {
   setWishlist: React.Dispatch<React.SetStateAction<BookType[]>>;
 }
 
-export const BooksContext = createContext<BooksContextType | undefined>(
-  undefined,
-);
+const defaultBooksContext: BooksContextType = {
+  readBooks: [],
+  setReadBooks: () => undefined,
+  wishlist: [],
+  setWishlist: () => undefined,
+};
+
+export const BooksContext =
+  createContext<BooksContextType>(defaultBooksContext);
 
 const BooksProvider = ({ children }: { children: ReactNode }) => {
   const [readBooks, setReadBooks] = useState<BookType[]>([]);
