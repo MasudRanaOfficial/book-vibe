@@ -4,16 +4,18 @@ import BookCard from "@/app/components/shared/BookCard";
 import Link from "next/link";
 
 export const getData = async () => {
-   try {
-     const response = await fetch(
-       `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/booksData.json`,
-     );
-     const data = await response.json();
-     return data;
-   } catch (error) {
-     console.error("Error fetching books data:", error);
-     return [];
-   }
+  try {
+    const baseUrl = (
+      process.env.NEXT_PUBLIC_SERVER_BASE_URL ?? "http://localhost:3000"
+    ).replace(/;$/, "");
+
+    const response = await fetch(`${baseUrl}/data/booksData.json`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching books data:", error);
+    return [];
+  }
 };
 
 const Books = async () => {

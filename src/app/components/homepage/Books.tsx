@@ -4,7 +4,11 @@ import BookCard from "@/app/components/shared/BookCard";
 import Link from "next/link";
 
 export const getData = async () => {
-  const res = await fetch("http://localhost:3000/data/booksData.json");
+  const baseUrl = (
+    process.env.NEXT_PUBLIC_SERVER_BASE_URL ?? "http://localhost:3000"
+  ).replace(/;$/, "");
+
+  const res = await fetch(`${baseUrl}/data/booksData.json`);
   const data = await res.json();
   return data;
 };
