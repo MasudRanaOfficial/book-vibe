@@ -3,10 +3,17 @@ import type { BookType } from "@/app/types/book-types";
 import BookCard from "@/app/components/shared/BookCard";
 import Link from "next/link";
 
-const getData = async () => {
-  const res = await fetch("http://localhost:3000/data/booksData.json");
-  const data = await res.json();
-  return data;
+export const getData = async () => {
+   try {
+     const response = await fetch(
+       `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/booksData.json`,
+     );
+     const data = await response.json();
+     return data;
+   } catch (error) {
+     console.error("Error fetching books data:", error);
+     return [];
+   }
 };
 
 const Books = async () => {
