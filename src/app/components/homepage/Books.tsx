@@ -2,15 +2,10 @@ import React from "react";
 import type { BookType } from "@/app/types/book-types";
 import BookCard from "@/app/components/shared/BookCard";
 import Link from "next/link";
+import booksData from "../../../../public/data/booksData.json";
 
 export const getData = async () => {
-  const baseUrl = (
-    process.env.NEXT_PUBLIC_SERVER_BASE_URL ?? "http://localhost:3000"
-  ).replace(/;$/, "");
-
-  const res = await fetch(`${baseUrl}/data/booksData.json`);
-  const data = await res.json();
-  return data;
+  return booksData as BookType[];
 };
 
 const Books = async () => {
